@@ -29,24 +29,38 @@ Leap.loop(function(frame) {
 
 var Box = function(x, y, sx, sy) {
 	var box = this;
-	var img = document.createElement('img');
-	img.src = 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/109794/cat_2.png';
-	img.style.position = 'absolute';
-	img.onload = function () {
+	var canvas = new Canvas();
+	canvas.height=height;
+   	canvas.width = width;		
+	var context = canvas.getContext("2d");
+	body.appendChild(canvas);
+	
+	var frameimg = document.createElement('frameimg');
+	frameimg.src = 'http://etc.usf.edu/clipart/40600/40690/pb_sq_40690_lg.gif';
+	frameimg.style.position = 'absolute';
+	var cctvimg = document.createElement('cctvimg');
+	cctvimg.src = ''; // add cat here
+	cctvimg.style.position = 'absolute';
+	
+	frameimg.onload = function () {
 		box.setTransform([x,y], [sx, sy]);
-		document.body.appendChild(img);
+		document.body.appendChild(frameimg);
 	}
-
 	box.setTransform = function(position, scale) {
 
-		img.style.left = position[0] + 'px';
-		img.style.top  = position[1] + 'px';
+		frameimg.style.left = position[0] + 'px';
+		frameimg.style.top  = position[1] + 'px';
 
-		img.style.transform = 'scale(' + scale[0] + ',' + scale[1] + ')';
+		frameimg.style.transform = 'scale(' + scale[0] + ',' + scale[1] + ')';
 
 		//img.style.webkitTransform = img.style.MozTransform = img.style.msTransform =
 		//img.style.OTransform = img.style.transform;
-
+		ctx.drawImage(imageObj1, 0, 0, 328, 526);
+		imageObj2.onload = function() {
+		    ctx.drawImage(imageObj2, 15, 85, 300, 300);
+		    var img = c.toDataURL("image/png");
+		    document.write('<img src="' + img + '" width="328" height="526"/>');
+		}
 	};
 
 };
