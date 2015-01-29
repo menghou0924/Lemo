@@ -27,22 +27,22 @@ Leap.loop(function(frame) {
 }).use('screenPosition', {scale: 0.25});
 
 
-var Box = function(x, y) {
+var Box = function(x, y, sx, sy) {
 	var box = this;
 	var img = document.createElement('img');
 	img.src = 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/109794/cat_2.png';
 	img.style.position = 'absolute';
 	img.onload = function () {
-		box.setTransform([x,y]);
+		box.setTransform([x,y], [sx, sy]);
 		document.body.appendChild(img);
 	}
 
-	box.setTransform = function(position) {
+	box.setTransform = function(position, scale) {
 
 		img.style.left = position[0] + 'px';
 		img.style.top  = position[1] + 'px';
 
-		//img.style.transform = 'rotate(' + -rotation + 'rad)';
+		img.style.transform = 'scale(' + scale[0] + ',' + scale[1] + ')';
 
 		//img.style.webkitTransform = img.style.MozTransform = img.style.msTransform =
 		//img.style.OTransform = img.style.transform;
@@ -53,7 +53,7 @@ var Box = function(x, y) {
 
 for (var i = 0; i < 3; i++) {
 	for (var j = 0; j < 3; j++) {
-		boxes[i * 3 + j] = new Box(200 * i, 200 * j);
+		boxes[i * 3 + j] = new Box(200 * i, 200 * j, 1, 1);
 	};
 };
 </script>
