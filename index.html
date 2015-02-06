@@ -50,6 +50,7 @@ Leap.loop({enableGestures: true}, function(frame) {
 
  	var frameOutput = document.getElementById("frameData");
 
+<<<<<<< HEAD
     // Display basic data
     var frameString = "Frame ID: " + frame.id + "<br />"
     + "Timestamp:" + frame.timestamp + " &micro;s<br />"
@@ -417,6 +418,43 @@ function togglePause() {
     document.getElementById("pause").innerText = "Pause";
   }
 }
+=======
+var Box = function(x, y, sx, sy) {
+	var box = this;
+	var canvas = new Canvas();
+	canvas.height=height;
+   	canvas.width = width;		
+	var context = canvas.getContext("2d");
+	body.appendChild(canvas);
+	
+	var frameimg = document.createElement('frameimg');
+	frameimg.src = 'http://etc.usf.edu/clipart/40600/40690/pb_sq_40690_lg.gif';
+	frameimg.style.position = 'absolute';
+	var cctvimg = document.createElement('cctvimg');
+	cctvimg.src = ''; // add cat here
+	cctvimg.style.position = 'absolute';
+	
+	frameimg.onload = function () {
+		box.setTransform([x,y], [sx, sy]);
+		document.body.appendChild(frameimg);
+	}
+	box.setTransform = function(position, scale) {
+
+		frameimg.style.left = position[0] + 'px';
+		frameimg.style.top  = position[1] + 'px';
+
+		frameimg.style.transform = 'scale(' + scale[0] + ',' + scale[1] + ')';
+
+		//img.style.webkitTransform = img.style.MozTransform = img.style.msTransform =
+		//img.style.OTransform = img.style.transform;
+		ctx.drawImage(imageObj1, 0, 0, 328, 526);
+		imageObj2.onload = function() {
+		    ctx.drawImage(imageObj2, 15, 85, 300, 300);
+		    var img = c.toDataURL("image/png");
+		    document.write('<img src="' + img + '" width="328" height="526"/>');
+		}
+	};
+>>>>>>> FETCH_HEAD
 
 function pauseForGestures() {
   if (document.getElementById("pauseOnGesture").checked) {
@@ -426,5 +464,13 @@ function pauseForGestures() {
   }
 }
 
+<<<<<<< HEAD
+=======
+for (var i = 0; i < 3; i++) {
+	for (var j = 0; j < 3; j++) {
+		boxes[i * 3 + j] = new Box(200 * i, 200 * j, 1, 1);
+	};
+};
+>>>>>>> FETCH_HEAD
 </script>
 </html>
