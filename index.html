@@ -50,7 +50,6 @@ Leap.loop({enableGestures: true}, function(frame) {
 
  	var frameOutput = document.getElementById("frameData");
 
-<<<<<<< HEAD
     // Display basic data
     var frameString = "Frame ID: " + frame.id + "<br />"
     + "Timestamp:" + frame.timestamp + " &micro;s<br />"
@@ -418,7 +417,7 @@ function togglePause() {
     document.getElementById("pause").innerText = "Pause";
   }
 }
-=======
+
 var Box = function(x, y, sx, sy) {
 	var box = this;
 	var canvas = new Canvas();
@@ -454,7 +453,6 @@ var Box = function(x, y, sx, sy) {
 		    document.write('<img src="' + img + '" width="328" height="526"/>');
 		}
 	};
->>>>>>> FETCH_HEAD
 
 function pauseForGestures() {
   if (document.getElementById("pauseOnGesture").checked) {
@@ -464,13 +462,10 @@ function pauseForGestures() {
   }
 }
 
-<<<<<<< HEAD
-=======
 for (var i = 0; i < 3; i++) {
 	for (var j = 0; j < 3; j++) {
 		boxes[i * 3 + j] = new Box(200 * i, 200 * j, 1, 1);
 	};
 };
->>>>>>> FETCH_HEAD
 </script>
 </html>
