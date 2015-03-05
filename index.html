@@ -147,7 +147,6 @@ screen {
 <script>
 var boxes = {};
 var screens = {};
-<<<<<<< HEAD
 var pinchSet = [];
 var ctl = new Leap.Controller({enableGestures: true});
 //var swiper = ctl.gesture('swipe');
@@ -392,7 +391,7 @@ Leap.loop({enableGestures: true}, function(frame) {
     }
   }
 
-  if (screens[0].state == 1) {
+  else if (screens[0].state == 1) {
     var debugstring = "";
     // using pinch strength to enlarge screen
     if (frame.valid && frame.hands.length > 0) {
@@ -465,7 +464,7 @@ Leap.loop({enableGestures: true}, function(frame) {
     }
   }
 
-  if (screens[0].state == 2) {
+  else if (screens[0].state == 2) {
    var debugstring = "";
     if (frame.valid) {
       // for pan/tilt
@@ -524,7 +523,7 @@ Leap.loop({enableGestures: true}, function(frame) {
     }
   }
 
-  if (screens[0].state == 3) {
+  else if (screens[0].state == 3) {
    var debugstring = "";
     if (frame.valid) {
       if (frame.gestures.length > 0) {      
@@ -610,121 +609,136 @@ if (annyang) {
 // Box class representing a single cctv source
 var Box = function(id, position, css) {
 	var box = this;
-
+  box.id = id;
+  box.position = position;
+  box.css = css;
   // frameimg is the black box frame
   //var frameimg = new Image();
   //frameimg.src = 'frame.png';
   //frameimg.style.position = 'absolute';
   // cctvimg is the image representing the cctv video, change later
-  var img = new Image();
+  box.img = new Image();
   // assign images in each box
   switch(id) {
   	case 0:
-      img.src = '1.jpg';
+      box.img.src = '1.jpg';
+      box.img.id = "image0";
       break;
     case 1:
-      img.src = '2.jpg';
+      box.img.src = '2.jpg';
+      box.img.id = "image1";
       break;
     case 2:
-      img.src = '3.jpg';
+      box.img.src = '3.jpg';
+      box.img.id = "image2";
       break;
     case 3:
-      img.src = '4.jpg';
+      box.img.src = '4.jpg';
+      box.img.id = "image3";
       break;
     case 4:
-      img.src = '5.jpg';
+      box.img.src = '5.jpg';
+      box.img.id = "image4";
       break;
     case 5:
-      img.src = '6.jpg';
+      box.img.src = '6.jpg';
+      box.img.id = "image5";
       break;
     case 6:
-      img.src = '7.jpg';
+      box.img.src = '7.jpg';
+      box.img.id = "image6";
       break;
     case 7:
-      img.src = '8.jpg';
+      box.img.src = '8.jpg';
+      box.img.id = "image7";
       break;
     case 8:
-      img.src = '9.jpg';
+      box.img.src = '9.jpg';
+      box.img.id = "image8";
       break;
     case 9:
-      img.src = '10.jpg';
+      box.img.src = '10.jpg';
+      box.img.id = "image9";
       break;
     case 10:
-      img.src = '11.jpg';
+      box.img.src = '11.jpg';
+      box.img.id = "image10";
       break;
     case 11:
-      img.src = '12.jpg';
+      box.img.src = '12.jpg';
+      box.img.id = "image11";
       break;
     case 12:
-      img.src = '13.jpg';
+      box.img.src = '13.jpg';
+      box.img.id = "image12";
       break;
     case 13:
-      img.src = '14.jpg';
+      box.img.src = '14.jpg';
+      box.img.id = "image13";
       break;
   }
 
-  img.style.position = 'absolute';
+  box.img.style.position = 'absolute';
       
-    // setting position and style for frameimg and cctvimg
-    // frameimg.onload = function () {
-    // 	frameimg.style.left = position[0] + 'px';
-    // 	frameimg.style.top = position[1] + 'px';
-    // 	frameimg.style.zIndex = 1;
-    // 	frameimg.style.transform = 'scale(' + scale[0] + ',' + scale[1] + ')';
-    // 	frameimg.style.webkitTransform = frameimg.style.MozTransform = frameimg.style.msTransform =
-    // 	frameimg.style.OTransform = frameimg.style.transform;
-    // 	document.body.appendChild(frameimg);    
-    // }
-    img.onload = function() {
-    	img.style.left = position[0] + 'px';
-    	img.style.top = position[1] + 'px';
-    	//img.style.zIndex = 2;
-    	//img.style.transform = 'scale(' + scale[0] + ',' + scale[1] + ')';
-    	img.style.webkitTransform = img.style.MozTransform = img.style.msTransform = 
-    	img.style.OTransform = img.style.transform;
-    	document.body.appendChild(img);
+  // setting position and style for frameimg and cctvimg
+  // frameimg.onload = function () {
+  // 	frameimg.style.left = position[0] + 'px';
+  // 	frameimg.style.top = position[1] + 'px';
+  // 	frameimg.style.zIndex = 1;
+  // 	frameimg.style.transform = 'scale(' + scale[0] + ',' + scale[1] + ')';
+  // 	frameimg.style.webkitTransform = frameimg.style.MozTransform = frameimg.style.msTransform =
+  // 	frameimg.style.OTransform = frameimg.style.transform;
+  // 	document.body.appendChild(frameimg);    
+  // }
+  box.img.onload = function() {
+  	box.img.style.left = position[0] + 'px';
+  	box.img.style.top = position[1] + 'px';
+  	//img.style.zIndex = 2;
+  	//img.style.transform = 'scale(' + scale[0] + ',' + scale[1] + ')';
+  	box.img.style.webkitTransform = box.img.style.MozTransform = box.img.style.msTransform = 
+  	box.img.style.OTransform = box.img.style.transform;
+  	document.body.appendChild(box.img);
+  }
+
+  // function setTransform is called whenever the box is transformed to new position / scale
+  box.setTransform = function(position, fromState, toState, setid, css) {
+
+  	// frameimg.style.left = position[0] + 'px';
+  	// frameimg.style.top  = position[1] + 'px';
+  	// frameimg.style.transform = 'scale(' + scale[0] + ',' + scale[1] + ')';
+  	// frameimg.style.webkitTransform = frameimg.style.MozTransform = frameimg.style.msTransform =
+  	// frameimg.style.OTransform = frameimg.style.transform;
+    if (fromState == 2 && toState == 1) {
+      box.img.style.left = position[0] + state1CoordinatesSet[setid][0] + 'px';
+      box.img.style.top  = position[1] + state1CoordinatesSet[setid][1] + 'px';        
+    }
+    if (fromState == 2 && toState == 3) {
+      box.img.style.left = position[0] + state1CoordinatesSet[setid][0] + 'px';
+      box.img.style.top  = position[1] + state1CoordinatesSet[setid][1] + 'px';  
+    }
+    if (fromState == 1 && toState == 0) {
+      box.img.style.left = position[0] + state0CoordinatesSet[setid][0] + 'px';
+      box.img.style.top  = position[1] + state0CoordinatesSet[setid][1] + 'px';         
+    }
+    if (fromState == 1 && toState == 2) {
+      box.img.style.left = position[0] + state1CoordinatesSet[setid][0] + 'px';
+      box.img.style.top  = position[1] + state1CoordinatesSet[setid][1] + 'px';        
+    }
+    if (fromState == 0) {
+      // toState can only be 1
+      box.img.style.left = position[0] + state1CoordinatesSet[setid][0] + 'px';
+      box.img.style.top  = position[1] + state1CoordinatesSet[setid][1] + 'px';          
     }
 
-    // function setTransform is called whenever the box is transformed to new position / scale
-    box.setTransform = function(position, fromState, toState, setid, css) {
-
-    	// frameimg.style.left = position[0] + 'px';
-    	// frameimg.style.top  = position[1] + 'px';
-    	// frameimg.style.transform = 'scale(' + scale[0] + ',' + scale[1] + ')';
-    	// frameimg.style.webkitTransform = frameimg.style.MozTransform = frameimg.style.msTransform =
-    	// frameimg.style.OTransform = frameimg.style.transform;
-      if (fromState == 2 && toState == 1) {
-        img.style.left = position[0] + state1CoordinatesSet[setid][0] + 'px';
-        img.style.top  = position[1] + state1CoordinatesSet[setid][1] + 'px';        
-      }
-      if (fromState == 2 && toState == 3) {
-        img.style.left = position[0] + state1CoordinatesSet[setid][0] + 'px';
-        img.style.top  = position[1] + state1CoordinatesSet[setid][1] + 'px';  
-      }
-      if (fromState == 1 && toState == 0) {
-        img.style.left = position[0] + state0CoordinatesSet[setid][0] + 'px';
-        img.style.top  = position[1] + state0CoordinatesSet[setid][1] + 'px';         
-      }
-      if (fromState == 1 && toState == 2) {
-        img.style.left = position[0] + state1CoordinatesSet[setid][0] + 'px';
-        img.style.top  = position[1] + state1CoordinatesSet[setid][1] + 'px';        
-      }
-      if (fromState == 0) {
-        // toState can only be 1
-        img.style.left = position[0] + state1CoordinatesSet[setid][0] + 'px';
-        img.style.top  = position[1] + state1CoordinatesSet[setid][1] + 'px';          
-      }
-
-    	//img.style.transform = 'scale(' + scale[0] + ',' + scale[1] + ')';
-    	img.style.webkitTransform = img.style.MozTransform = img.style.msTransform =
-    	img.style.OTransform = img.style.transform;
-      img.className = "";
-      if (css != '') {
-        img.classList.add(css);
-      }
-      //img.maxWidth = scale + 'px';
-    };
-
+  	//img.style.transform = 'scale(' + scale[0] + ',' + scale[1] + ')';
+  	box.img.style.webkitTransform = box.img.style.MozTransform = box.img.style.msTransform =
+  	box.img.style.OTransform = box.img.style.transform;
+    box.img.className = "";
+    if (css != '') {
+      box.img.classList.add(css);
+    }
+    //img.maxWidth = scale + 'px';
+  };
 };
 var state0CoordinatesSet = [[0, 0], [200, 0], [400, 0], [0, 200], [200, 200], [400, 200], [0, 400], [200, 400], [400, 400]];
 var state1CoordinatesSet = [[0, 0], [300, 0], [300, 90], [300, 180], [300, 270], [-60, 300],[30, 300], [120, 300], [210, 300]];
@@ -735,8 +749,11 @@ var state1CoordinatesSet = [[0, 0], [300, 0], [300, 90], [300, 180], [300, 270],
 // scale = css style chosen for the current state
 var Screen = function(id, state, position, css) {     
 	var screen = this;
-  this.state = state;
-  var selectBoxId = -1;
+  screen.id = id;
+  screen.state = state;
+  screen.position = position;
+  screen.css = css;
+  screen.selectBoxId = -1;
   // initialize 9 boxes within a screen
   for (var i = 0; i < 3; i++) {
   	for (var j = 0; j < 3; j++) {
@@ -746,15 +763,15 @@ var Screen = function(id, state, position, css) {
   };
 
   // draw a text box below the 9 boxes
-  var canvas = document.createElement("canvas");
-  canvas.id = 'mycanvas';
-  canvas.style.position = 'absolute';
-  canvas.style.left = position[0] + 0 + 'px';
-  canvas.style.top = position[1] + 600 + 'px';
-  canvas.width = 600;
-  canvas.height = 50;
-  document.body.appendChild(canvas);
-  var context = canvas.getContext("2d");
+  screen.canvas = document.createElement("canvas");
+  screen.canvas.id = 'mycanvas';
+  screen.canvas.style.position = 'absolute';
+  screen.canvas.style.left = position[0] + 0 + 'px';
+  screen.canvas.style.top = position[1] + 600 + 'px';
+  screen.canvas.width = 600;
+  screen.canvas.height = 50;
+  document.body.appendChild(screen.canvas);
+  var context = screen.canvas.getContext("2d");
   context.font = "20px Georgia";
   //context.color = "black";
   context.fillText("Screen " + id, 250, 40); 
@@ -762,115 +779,190 @@ var Screen = function(id, state, position, css) {
   // function enlarge1 is called when the original 9 boxes state is zoomed in to middle size
   screen.enlarge1 = function(boxid) {
     console.log("enlarge1");
-  	if (this.state == 0) {
+  	if (screen.state == 0) {
       // set the selected box to a larger size and at the upper left hand corner
-      selectBoxId = boxid;
-      boxes[boxid].setTransform(position, this.state, 1, 0, 'enlarge300');
+      screen.selectBoxId = boxid;
+      boxes[boxid].setTransform(position, screen.state, 1, 0, 'enlarge300');
       var j = 1;
       for (var i = 0; i < 9; i++) {
         if (i != boxid) {
-          boxes[i].setTransform(position, this.state, 1, j, 'enlarge90');
+          boxes[i].setTransform(position, screen.state, 1, j, 'enlarge90');
           j++;          
         }
       }
-      this.state = 1;
+      screen.state = 1;
     }
   };
 
   screen.enlarge2 = function() {
     console.log("enlarge2");
-    if (this.state == 1) {
+    if (screen.state == 1) {
       // set the selected box to the largest size
-      boxes[selectBoxId].setTransform(position, this.state, 2, 0, 'enlarge600');
+      boxes[screen.selectBoxId].setTransform(position, screen.state, 2, 0, 'enlarge600');
       var j = 1;
       for (var i = 0; i < 9; i++) {
-        if (i != selectBoxId) {
-          boxes[i].setTransform(position, this.state, 2, j, 'invisible');
+        if (i != screen.selectBoxId) {
+          boxes[i].setTransform(position, screen.state, 2, j, 'invisible');
           j++;
         }
       }
-      this.state = 2;
+      screen.state = 2;
     }
   };
 
   screen.enlarge3 = function() {
     console.log("enlarge3");    
     // further enlarge for pan/tilt
-    if (this.state == 2) {
+    if (screen.state == 2) {
       //boxes[selectBoxId].setTransform(position, this.state, 3, 0, 'enlarge800');
-      boxes[selectBoxId].setTransform(position, this.state, 3, 0, 'mask800');
+      boxes[screen.selectBoxId].setTransform(position, screen.state, 3, 0, 'maskmiddle800');
       var j = 1;
       for (var i = 0; i < 9; i++) {
-        if (i != selectBoxId) {
-          boxes[i].setTransform(position, this.state, 3, j, 'invisible');
+        if (i != screen.selectBoxId) {
+          boxes[i].setTransform(position, screen.state, 3, j, 'invisible');
           j++;
         }
       }
-      this.state = 3;
+      screen.state = 3;
     }
   }
 
   screen.reduce3 = function() {
     console.log("reduce3");    
     // reduce to full screen mode
-    if (this.state = 3) {
-      boxes[selectBoxId].setTransform(position, this.state, 2, 0, 'enlarge600');
+    if (screen.state = 3) {
+      boxes[screen.selectBoxId].setTransform(position, screen.state, 2, 0, 'enlarge600');
       var j = 1;
       for (var i = 0; i < 9; i++) {
-        if (i != selectBoxId) {
-          boxes[i].setTransform(position, this.state, 2, j, 'invisible');
+        if (i != screen.selectBoxId) {
+          boxes[i].setTransform(position, screen.state, 2, j, 'invisible');
         }
       }
-      this.state = 2;
+      screen.state = 2;
     }
   }
 
   screen.reduce2 = function() {
     console.log("reduce2");    
-    if (this.state == 2) {
+    if (screen.state == 2) {
       // zoom from largest single box to middle size
-      boxes[selectBoxId].setTransform(position, this.state, 1, 0, 'enlarge300');
+      boxes[screen.selectBoxId].setTransform(position, screen.state, 1, 0, 'enlarge300');
       var j = 1;
       for (var i = 0; i < 9; i++) {
-        if (i != selectBoxId) {
-          boxes[i].setTransform(position, this.state, 1, j, 'enlarge90');
+        if (i != screen.selectBoxId) {
+          boxes[i].setTransform(position, screens.state, 1, j, 'enlarge90');
           j++;
         }
-        this.state = 1;
+        screen.state = 1;
       }
     }
   };
 
   screen.reduce1 = function() {
     console.log("reduce1");    
-    if (this.state == 1) {
+    if (screen.state == 1) {
       // zoom back to the original position
-      selectBoxId = -1;
+      screen.selectBoxId = -1;
       for (var i = 0; i < 9; i++) {
-        boxes[i].setTransform(position, this.state, 0, i, '');
+        boxes[i].setTransform(position, screen.state, 0, i, '');
       }
-      this.state = 0;
+      screen.state = 0;
     }
   }
 
   screen.pantilt = function(direction) {
     console.log("pantilt");    
-    if (this.state == 3) {
-      imgx = boxes[selectBoxId].img.position[0];
-      imgy = boxes[selectBoxId].img.position[0];
+    if (screen.state == 3) {
+      //var name = "image" + screen.selectBoxId.toString();
+      //var pos = $('#' + name).position();
+      //imgx = pos.left;
+      //imgy = pos.top;
+      var selectBox = boxes[selectBoxId];
+      var css = selectBox.css;      
 
       if (direction == "left") {
-        //boxes[selectBoxId].setTransform([position[0],position[1]])
-        //boxes[selectBoxId].img.mask800.clip-path = insec(0px 100px 100px 100px);
+        // photo move to left, mask move to right
+        if (css == 'maskmiddle800') {
+          selectBox.setTransform([selectBox.position[0] - 100, selectBox.position[1]], screen.state, screen.state, selectBoxId, 'maskright800');
+        }
+        else if (css == 'maskup800') {
+          selectBox.setTransform([selectBox.position[0] - 100, selectBox.position[1]], screen.state, screen.state, selectBoxId, 'maskrightup800');
+        }
+        else if (css == 'maskdown800') {
+          selectBox.setTransform([selectBox.position[0] - 100, selectBox.position[1]], screen.state, screen.state, selectBoxId, 'maskrightdown800');
+        }        
+        else if (css == 'maskleftup800') {
+          selectBox.setTransform([selectBox.position[0] - 100, selectBox.position[1]], screen.state, screen.state, selectBoxId, 'maskup800');
+        }
+        else if (css == 'maskleft800') {
+          selectBox.setTransform([selectBox.position[0] - 100, selectBox.position[1]], screen.state, screen.state, selectBoxId, 'maskmiddle800');
+        }
+        else if (css == 'maskleftdown800') {
+          selectBox.setTransform([selectBox.position[0] - 100, selectBox.position[1]], screen.state, screen.state, selectBoxId, 'maskdown800');
+        }
       }
-      else if (direction == "right" && imgx < position[0]) {
-
+      else if (direction == "right") {
+        // photo move to right, mask move to left
+        if (css == 'maskmiddle800') {
+          selectBox.setTransform([selectBox.position[0] + 100, selectBox.position[1]], screen.state, screen.state, selectBoxId, 'maskleft800');
+        }
+        else if (css == 'maskup800') {
+          selectBox.setTransform([selectBox.position[0] + 100, selectBox.position[1]], screen.state, screen.state, selectBoxId, 'maskleftup800');
+        }
+        else if (css == 'maskdown800') {
+          selectBox.setTransform([selectBox.position[0] + 100, selectBox.position[1]], screen.state, screen.state, selectBoxId, 'maskleftdown800');          
+        }
+        else if (css == 'maskrightup800') {
+          selectBox.setTransform([selectBox.position[0] + 100, selectBox.position[1]], screen.state, screen.state, selectBoxId, 'maskup800');
+        }
+        else if (css == 'maskright800') {
+          selectBox.setTransform([selectBox.position[0] + 100, selectBox.position[1]], screen.state, screen.state, selectBoxId, 'maskmiddle800');
+        }
+        else if (css == 'maskrightdown800') {
+          selectBox.setTransform([selectBox.position[0] + 100, selectBox.position[1]], screen.state, screen.state, selectBoxId, 'maskdown800');
+        }
       }
       else if (direction == "up") {
-
+        // photo move up, mask move down
+        if (css == 'maskmiddle800') {
+          selectBox.setTransform([selectBox.position[0], selectBox.position[1] - 100], screen.state, screen.state, selectBoxId, 'maskdown800');
+        }
+        else if (css == 'maskleft800') {
+          selectBox.setTransform([selectBox.position[0], selectBox.position[1] - 100], screen.state, screen.state, selectBoxId, 'maskleftdown800');
+        }
+        else if (css == 'maskright800') {
+          selectBox.setTransform([selectBox.position[0], selectBox.position[1] - 100], screen.state, screen.state, selectBoxId, 'maskrightdown800');
+        } 
+        else if (css == 'maskup800') {
+          selectBox.setTransform([selectBox.position[0], selectBox.position[1] - 100], screen.state, screen.state, selectBoxId, 'maskmiddle800');
+        }               
+        else if (css == 'maskleftup800') {
+          selectBox.setTransform([selectBox.position[0], selectBox.position[1] - 100], screen.state, screen.state, selectBoxId, 'maskleft800');
+        }
+        else if (css == 'maskrightup800') {
+          selectBox.setTransform([selectBox.position[0], selectBox.position[1] - 100], screen.state, screen.state, selectBoxId, 'maskright800');          
+        }
       }
       else if (direction == "down" && imgy < position[1]) {
-
+        // photo move down, mask move up
+        if (css == 'maskmiddle800') {
+          selectBox.setTransform([selectBox.position[0], selectBox.position[1] + 100], screen.state, screen.state, selectBoxId, 'maskup800'); 
+        }
+        else if (css == 'maskleft800') {
+          selectBox.setTransform([selectBox.position[0], selectBox.position[1] + 100], screen.state, screen.state, selectBoxId, 'maskleftup800'); 
+        }
+        else if (css == 'maskright800') {
+          selectBox.setTransform([selectBox.position[0], selectBox.position[1] + 100], screen.state, screen.state, selectBoxId, 'maskrightup800'); 
+        } 
+        else if (css == 'maskdown800') {
+          selectBox.setTransform([selectBox.position[0], selectBox.position[1] + 100], screen.state, screen.state, selectBoxId, 'maskmiddle800'); 
+        }               
+        else if (css == 'maskleftdown800') {
+          selectBox.setTransform([selectBox.position[0], selectBox.position[1] + 100], screen.state, screen.state, selectBoxId, 'maskleft800'); 
+        }
+        else if (css == 'maskrightdown800') {
+          selectBox.setTransform([selectBox.position[0], selectBox.position[1] + 100], screen.state, screen.state, selectBoxId, 'maskright800');           
+        }
       }
     }
   }
@@ -901,436 +993,6 @@ function togglePause() {
   }
 }
 
-=======
-var ctl = new Leap.Controller({enableGestures: true});
-var swiper = ctl.gesture('swipe');
-var tolerance = 50;
-var cooloff = 300;
-
-// Store frame for motion functions
-var previousFrame = null;
-var paused = false;
-var pauseOnGesture = false;
-
-// Setup Leap loop with frame callback function
-var controllerOptions = {enableGestures: true};
-
-// to use HMD mode:
-// controllerOptions.optimizeHMD = true;
-
-Leap.loop({enableGestures: true}, function(frame) {
-
-	if (paused) {
-    	return; // Skip this update
- 	}
-
- 	var frameOutput = document.getElementById("frameData");
-
-    // Display basic data
-    var frameString = "Frame ID: " + frame.id + "<br />"
-    + "Timestamp:" + frame.timestamp + " &micro;s<br />"
-    + "Hands: " + frame.hands.length + "<br />"
-    + "Fingers: " + frame.fingers.length + "<br />"
-    + "Tools: " + frame.tools.length + "<br />"
-    + "Gestures: " + frame.gestures.length + "<br />";
-
-  // Frame motion factors
-  if (previousFrame && previousFrame.valid) {
-    var translation = frame.translation(previousFrame);
-    frameString += "Translation: " + vectorToString(translation) + " mm <br />";
-
-    var rotationAxis = frame.rotationAxis(previousFrame);
-    var rotationAngle = frame.rotationAngle(previousFrame);
-    frameString += "Rotation axis: " + vectorToString(rotationAxis, 2) + "<br />";
-    frameString += "Rotation angle: " + rotationAngle.toFixed(2) + " radians<br />";
-
-    var scaleFactor = frame.scaleFactor(previousFrame);
-    frameString += "Scale factor: " + scaleFactor.toFixed(2) + "<br />";
-  }
-  frameOutput.innerHTML = "<div style='width:300px; float:left; padding:5px'>" + frameString + "</div>";
-
-  // Display Hand object data
-  var handOutput = document.getElementById("handData");
-  var handString = "";
-  if (frame.hands.length > 0) {
-    for (var i = 0; i < frame.hands.length; i++) {
-      var hand = frame.hands[i];
-
-      handString += "<div style='width:300px; float:left; padding:5px'>";
-      handString += "Hand ID: " + hand.id + "<br />";
-      handString += "Type: " + hand.type + " hand" + "<br />";
-      handString += "Direction: " + vectorToString(hand.direction, 2) + "<br />";
-      handString += "Palm position: " + vectorToString(hand.palmPosition) + " mm<br />";
-      handString += "Grab strength: " + hand.grabStrength + "<br />";
-      handString += "Pinch strength: " + hand.pinchStrength + "<br />";
-      handString += "Confidence: " + hand.confidence + "<br />";
-      handString += "Arm direction: " + vectorToString(hand.arm.direction()) + "<br />";
-      handString += "Arm center: " + vectorToString(hand.arm.center()) + "<br />";
-      handString += "Arm up vector: " + vectorToString(hand.arm.basis[1]) + "<br />";
-
-      // Hand motion factors
-      if (previousFrame && previousFrame.valid) {
-        var translation = hand.translation(previousFrame);
-        handString += "Translation: " + vectorToString(translation) + " mm<br />";
-
-        var rotationAxis = hand.rotationAxis(previousFrame, 2);
-        var rotationAngle = hand.rotationAngle(previousFrame);
-        handString += "Rotation axis: " + vectorToString(rotationAxis) + "<br />";
-        handString += "Rotation angle: " + rotationAngle.toFixed(2) + " radians<br />";
-
-        var scaleFactor = hand.scaleFactor(previousFrame);
-        handString += "Scale factor: " + scaleFactor.toFixed(2) + "<br />";
-      }
-
-      // IDs of pointables associated with this hand
-      if (hand.pointables.length > 0) {
-        var fingerIds = [];
-        for (var j = 0; j < hand.pointables.length; j++) {
-          var pointable = hand.pointables[j];
-            fingerIds.push(pointable.id);
-        }
-        if (fingerIds.length > 0) {
-          handString += "Fingers IDs: " + fingerIds.join(", ") + "<br />";
-        }
-      }
-
-      handString += "</div>";
-    }
-  }
-  else {
-    handString += "No hands";
-  }
-  //handOutput.innerHTML = handString;
-
-  // Display Pointable (finger and tool) object data
-  var pointableOutput = document.getElementById("pointableData");
-  var pointableString = "";
-  if (frame.pointables.length > 0) {
-    var fingerTypeMap = ["Thumb", "Index finger", "Middle finger", "Ring finger", "Pinky finger"];
-    var boneTypeMap = ["Metacarpal", "Proximal phalanx", "Intermediate phalanx", "Distal phalanx"];
-    for (var i = 0; i < frame.pointables.length; i++) {
-      var pointable = frame.pointables[i];
-
-      pointableString += "<div style='width:250px; float:left; padding:5px'>";
-
-      if (pointable.tool) {
-        pointableString += "Pointable ID: " + pointable.id + "<br />";
-        pointableString += "Classified as a tool <br />";
-        pointableString += "Length: " + pointable.length.toFixed(1) + " mm<br />";
-        pointableString += "Width: "  + pointable.width.toFixed(1) + " mm<br />";
-        pointableString += "Direction: " + vectorToString(pointable.direction, 2) + "<br />";
-        pointableString += "Tip position: " + vectorToString(pointable.tipPosition) + " mm<br />"
-        pointableString += "</div>";
-      }
-      else {
-        pointableString += "Pointable ID: " + pointable.id + "<br />";
-        pointableString += "Type: " + fingerTypeMap[pointable.type] + "<br />";
-        pointableString += "Belongs to hand with ID: " + pointable.handId + "<br />";
-        pointableString += "Classified as a finger<br />";
-        pointableString += "Length: " + pointable.length.toFixed(1) + " mm<br />";
-        pointableString += "Width: "  + pointable.width.toFixed(1) + " mm<br />";
-        pointableString += "Direction: " + vectorToString(pointable.direction, 2) + "<br />";
-        pointableString += "Extended?: "  + pointable.extended + "<br />";
-        pointable.bones.forEach( function(bone){
-        pointableString += boneTypeMap[bone.type] + " bone <br />";
-        pointableString += "Center: " + vectorToString(bone.center()) + "<br />";
-        pointableString += "Direction: " + vectorToString(bone.direction()) + "<br />";
-        pointableString += "Up vector: " + vectorToString(bone.basis[1]) + "<br />";
-        });
-        pointableString += "Tip position: " + vectorToString(pointable.tipPosition) + " mm<br />";
-        pointableString += "</div>";
-      }
-    }
-  }
-  else {
-    pointableString += "<div>No pointables</div>";
-  }
-  //pointableOutput.innerHTML = pointableString;
-
-  // Display Gesture object data
-  var gestureOutput = document.getElementById("gestureData");
-  var gestureString = "";
-  if (frame.gestures.length > 0) {
-    if (pauseOnGesture) {
-      togglePause();
-    }
-    for (var i = 0; i < frame.gestures.length; i++) {
-      var gesture = frame.gestures[i];
-      gestureString += "Gesture ID: " + gesture.id + ", "
-                    + "type: " + gesture.type + ", "
-                    + "state: " + gesture.state + ", "
-                    + "hand IDs: " + gesture.handIds.join(", ") + ", "
-                    + "pointable IDs: " + gesture.pointableIds.join(", ") + ", "
-                    + "duration: " + gesture.duration + " &micro;s, ";
-
-      switch (gesture.type) {
-        case "circle":
-          gestureString += "center: " + vectorToString(gesture.center) + " mm, "
-                        + "normal: " + vectorToString(gesture.normal, 2) + ", "
-                        + "radius: " + gesture.radius.toFixed(1) + " mm, "
-                        + "progress: " + gesture.progress.toFixed(2) + " rotations";
-          break;
-        case "swipe":
-          gestureString += "start position: " + vectorToString(gesture.startPosition) + " mm, "
-                        + "current position: " + vectorToString(gesture.position) + " mm, "
-                        + "direction: " + vectorToString(gesture.direction, 1) + ", "
-                        + "speed: " + gesture.speed.toFixed(1) + " mm/s";
-          break;
-        case "screenTap":
-        case "keyTap":
-          gestureString += "position: " + vectorToString(gesture.position) + " mm";
-          break;
-        default:
-          gestureString += "unkown gesture type";
-      }
-      gestureString += "<br />";
-    }
-  }
-  //else {
-  //  gestureString += "No gestures";
-  //}
-  gestureOutput.innerHTML += gestureString;
-
-  // Store frame for motion functions
-  previousFrame = frame;
-
-	// handle enlarge1 function
-	if(frame.valid && frame.gestures.length > 0) {
-		for(var i = 0; i < frame.gestures.length; i++) {
-			var gesture = frame.gestures[i];
-			if(gesture.type == "swipe") {
-				console.log(gesture.direction[0] + " " + gesture.direction[1]);
-                // direction[0] = x, direction[1] = y
-                if(gesture.direction[0] >= -0.25 && gesture.direction[0] <= 0.25 
-                	&& gesture.direction[1] >= 0.75 && gesture.direction[1] <= 1) { 
-                	console.log("up");
-                	screens[0].enlarge1(5);
-                }
-                else if(gesture.direction[0] >= -0.25 && gesture.direction[0] <= 0.25 
-                	&& gesture.direction[1] >= -1 && gesture.direction[1] <= -0.75) {
-                	console.log("down");
-                	screens[0].enlarge1(3); 
-                } 
-                else if(gesture.direction[0] >= 0.75 && gesture.direction[0] <= 1 
-                	&& gesture.direction[1] >= -0.25 && gesture.direction[1] <= 0.25) {
-                	console.log("right");
-                    screens[0].enlarge1(1);  
-                }
-                else if(gesture.direction[0] >= -1 && gesture.direction[0] <= -0.75 
-                	&& gesture.direction[1] >= -0.25 && gesture.direction[1] <= 0.25) {
-                	console.log("left");
-                    screens[0].enlarge1(7);  
-                }
-                else if(gesture.direction[0] >= 0.25 && gesture.direction[0] <= 0.75 
-                	&& gesture.direction[1] >= 0.25 && gesture.direction[1] <= 0.75) {
-                	console.log("rightup");
-                    screens[0].enlarge1(2);  
-                }
-                else if(gesture.direction[0] >= 0.25 && gesture.direction[0] <= 0.75 
-                	&& gesture.direction[1] >= -0.75 && gesture.direction[1] <= -0.25) {
-                	console.log("rightdown");
-                    screens[0].enlarge1(0);  
-                }
-                else if(gesture.direction[0] >= -0.75 && gesture.direction[0] <= -0.25 
-                	&& gesture.direction[1] >= 0.25 && gesture.direction[1] <= 0.75) {
-                	console.log("leftup");
-                screens[0].enlarge1(8);  
-            	}
-            	else if(gesture.direction[0] >= -0.75 && gesture.direction[0] <= -0.25 
-            		&& gesture.direction[1] >= -0.75 && gesture.direction[1] <= -0.25) {
-            		console.log("leftdown");
-            		screens[0].enlarge1(6);  
-        		}		
-    		}
-		    if(gesture.type == "circle") {
-		    	console.log("middle");
-		    	screens[0].enlarge1(4);  
-    		}
-		}
-	}
-});
-
-// Box class representing a single cctv source
-var Box = function(id, position, scale) {
-	var box = this;
-
-        // frameimg is the black box frame
-        var frameimg = new Image();
-        frameimg.src = 'frame.png';
-        frameimg.style.position = 'absolute';
-        // cctvimg is the image representing the cctv video, change later
-        var cctvimg = new Image();
-        // assign images in each box
-        switch(id) {
-        	case 0:
-        	cctvimg.src = 'man.png';
-        	break;
-        	case 1:
-        	cctvimg.src = 'cat.png';
-        	break;
-        	case 2:
-        	cctvimg.src = 'penguin.png';
-        	break;
-        	case 3:
-        	cctvimg.src = 'ancientfemale.png';
-        	break;
-        	case 4:
-        	cctvimg.src = 'oldman.png';
-        	break;
-        	case 5:
-        	cctvimg.src = 'erakka.png';
-        	break;
-        	case 6:
-        	cctvimg.src = 'lion.png';
-        	break;
-        	case 7:
-        	cctvimg.src = 'nemo.png';
-        	break;
-        	case 8:
-        	cctvimg.src = 'baseball.png';
-        	break;
-        }
-        cctvimg.style.position = 'absolute';
-        
-        // setting position and style for frameimg and cctvimg
-        frameimg.onload = function () {
-        	frameimg.style.left = position[0] + 'px';
-        	frameimg.style.top = position[1] + 'px';
-        	frameimg.style.zIndex = 1;
-        	frameimg.style.transform = 'scale(' + scale[0] + ',' + scale[1] + ')';
-        	frameimg.style.webkitTransform = frameimg.style.MozTransform = frameimg.style.msTransform =
-        	frameimg.style.OTransform = frameimg.style.transform;
-        	document.body.appendChild(frameimg);    
-        }
-        cctvimg.onload = function() {
-        	cctvimg.style.left = 15 + position[0] + 'px';
-        	cctvimg.style.top = 15 + position[1] + 'px';
-        	cctvimg.style.zIndex = 2;
-        	cctvimg.style.transform = 'scale(' + scale[0] + ',' + scale[1] + ')';
-        	cctvimg.style.webkitTransform = cctvimg.style.MozTransform = cctvimg.style.msTransform = 
-        	cctvimg.style.OTransform = cctvimg.style.transform;
-        	document.body.appendChild(cctvimg);
-        }
-
-        // function setTransform is called whenever the box is transformed to new position / scale
-        box.setTransform = function(position, scale) {
-
-        	frameimg.style.left = position[0] + 'px';
-        	frameimg.style.top  = position[1] + 'px';
-        	frameimg.style.transform = 'scale(' + scale[0] + ',' + scale[1] + ')';
-        	frameimg.style.webkitTransform = frameimg.style.MozTransform = frameimg.style.msTransform =
-        	frameimg.style.OTransform = frameimg.style.transform;
-        	cctvimg.style.left = 15 * scale[0] + position[0] + 'px';
-        	cctvimg.style.top  = 15 * scale[1] + position[1] + 'px';
-        	cctvimg.style.transform = 'scale(' + scale[0] + ',' + scale[1] + ')';
-        	frameimg.style.webkitTransform = frameimg.style.MozTransform = frameimg.style.msTransform =
-        	frameimg.style.OTransform = frameimg.style.transform;
-        	cctvimg.style.left = 15 * scale[0] + position[0] + 'px';
-        	cctvimg.style.top  = 15 * scale[1] + position[1] + 'px';
-        	cctvimg.style.transform = 'scale(' + scale[0] + ',' + scale[1] + ')';
-        	cctvimg.style.webkitTransform = cctvimg.style.MozTransform = cctvimg.style.msTransform =
-        	cctvimg.style.OTransform = cctvimg.style.transform;
-        };
-
-    };
-
-var state1CoordinatesSet = {[390, 125], []};
-
-// class Screen representing a single screen with 9 boxes inside initially
-var Screen = function(id, state, position, scale) {     
-	var screen = this;
-  // initialize 9 boxes within a screen
-  for (var i = 0; i < 3; i++) {
-  	for (var j = 0; j < 3; j++) {
-  		boxes[i * 3 + j] = new Box(i * 3 + j, [146 * i + position[0], 146 * j + position[1]], [scale[0], scale[1]]);
-  	};
-  };
-  // draw a text box below the 9 boxes
-  var canvas = document.createElement("canvas");
-  canvas.id = 'mycanvas';
-  canvas.style.position = 'absolute';
-  canvas.style.left = position[0] + 200 + 'px';
-  canvas.style.top = position[1] + 550 + 'px';
-  canvas.width = 450;
-  canvas.height = 50;
-  document.body.appendChild(canvas);
-  var context = canvas.getContext("2d");
-  context.font = "20px Georgia";
-  context.fillText("Screen " + id, 390, 125); 
-  
-  // function enlarge1 is called when the original 9 boxes state is zoomed in
-  screen.enlarge1 = function(boxid) {
-  	if (state == 0) {
-      // set the selected box to a larger size and at the upper left hand corner
-      boxes[boxid].setTransform([375, 175], [2, 2]);
-      for (var i = 0; i < 9 && i != boxid; i++) {
-              //boxes[i].setTransform([
-          }
-      state = 1;
-    }
-  };
-}
-
-// initialize a new screen
-screens[0] = new Screen(0, 0, [300, 100], [1, 1]);
-ctl.setBackground(true);
-
-function vectorToString(vector, digits) {
-  if (typeof digits === "undefined") {
-    digits = 1;
-  }
-  return "(" + vector[0].toFixed(digits) + ", "
-             + vector[1].toFixed(digits) + ", "
-             + vector[2].toFixed(digits) + ")";
-}
-
-function togglePause() {
-  paused = !paused;
-
-  if (paused) {
-    document.getElementById("pause").innerText = "Resume";
-  } else {
-    document.getElementById("pause").innerText = "Pause";
-  }
-}
-
-var Box = function(x, y, sx, sy) {
-	var box = this;
-	var canvas = new Canvas();
-	canvas.height=height;
-   	canvas.width = width;		
-	var context = canvas.getContext("2d");
-	body.appendChild(canvas);
-	
-	var frameimg = document.createElement('frameimg');
-	frameimg.src = 'http://etc.usf.edu/clipart/40600/40690/pb_sq_40690_lg.gif';
-	frameimg.style.position = 'absolute';
-	var cctvimg = document.createElement('cctvimg');
-	cctvimg.src = ''; // add cat here
-	cctvimg.style.position = 'absolute';
-	
-	frameimg.onload = function () {
-		box.setTransform([x,y], [sx, sy]);
-		document.body.appendChild(frameimg);
-	}
-	box.setTransform = function(position, scale) {
-
-		frameimg.style.left = position[0] + 'px';
-		frameimg.style.top  = position[1] + 'px';
-
-		frameimg.style.transform = 'scale(' + scale[0] + ',' + scale[1] + ')';
-
-		//img.style.webkitTransform = img.style.MozTransform = img.style.msTransform =
-		//img.style.OTransform = img.style.transform;
-		ctx.drawImage(imageObj1, 0, 0, 328, 526);
-		imageObj2.onload = function() {
-		    ctx.drawImage(imageObj2, 15, 85, 300, 300);
-		    var img = c.toDataURL("image/png");
-		    document.write('<img src="' + img + '" width="328" height="526"/>');
-		}
-	};
-
->>>>>>> FETCH_HEAD
 function pauseForGestures() {
   if (document.getElementById("pauseOnGesture").checked) {
     pauseOnGesture = true;
@@ -1339,13 +1001,5 @@ function pauseForGestures() {
   }
 }
 
-<<<<<<< HEAD
-=======
-for (var i = 0; i < 3; i++) {
-	for (var j = 0; j < 3; j++) {
-		boxes[i * 3 + j] = new Box(200 * i, 200 * j, 1, 1);
-	};
-};
->>>>>>> FETCH_HEAD
 </script>
 </html>
