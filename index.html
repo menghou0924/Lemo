@@ -123,25 +123,25 @@ img.maskrightdown800 {
 <body>
 	<h1>Leap JavaScript Data Sample</h1>
   <div id="voiceMsg"><p></p></div>
-  <div id="flickrGallery" class="hidden"></div>
+  <!-- <div id="flickrGallery" class="hidden"></div> -->
   <div id="unsupported" class="hidden">
     <h4>It looks like your browser doesn't support speech recognition.</h4>
     <p>annyang plays nicely with all browsers, progressively enhancing modern browsers that support the SpeechRecognition standard, while leaving users with older browsers unaffected.</p>
     <p>Please visit <a href="http://www.annyangjs.com/">http://www.annyangjs.com/</a> in a desktop browser like Chrome.</p>
   </div>
-	<div id="main">
-		<h3>Frame Data:</h3>
-		<div id="frameData"></div>
-		<div style="clear:both;"></div>
-		<h3>Hand Data:</h3>
-		<div id="handData"></div>
-		<div style="clear:both;"></div>
-		<h3>Finger and tool data:</h3>
-		<div id="pointableData"></div>
-		<div style="clear:both;"></div>
-		<h3>Gesture Data:</h3>
-		<div id="gestureData"></div>
-	</div>
+  <div id="main">
+    <h3>Frame Data:</h3>
+    <div id="frameData"></div>
+    <div style="clear:both;"></div>
+    <h3>Hand Data:</h3>
+    <div id="handData"></div>
+    <div style="clear:both;"></div>
+    <h3>Finger and tool data:</h3>
+    <div id="pointableData"></div>
+    <div style="clear:both;"></div>
+    <h3>Gesture Data:</h3>
+    <div id="gestureData"></div>
+  </div>
   <!-- <div id="screen" class="screen"></div> -->
   <svg>
     <defs>
@@ -181,65 +181,67 @@ var Box = function(id, position, css) {
   // assign images in each box
   switch(id) {
     case 0:
-      box.img.src = '1.jpg';
-      box.img.id = "image0";
-      break;
+    box.img.src = '1.jpg';
+    box.img.id = "image0";
+    break;
     case 1:
-      box.img.src = '2.jpg';
-      box.img.id = "image1";
-      break;
+    box.img.src = '2.jpg';
+    box.img.id = "image1";
+    break;
     case 2:
-      box.img.src = '3.jpg';
-      box.img.id = "image2";
-      break;
+    box.img.src = '3.jpg';
+    box.img.id = "image2";
+    break;
     case 3:
-      box.img.src = '4.jpg';
-      box.img.id = "image3";
-      break;
+    box.img.src = '4.jpg';
+    box.img.id = "image3";
+    break;
     case 4:
-      box.img.src = '5.jpg';
-      box.img.id = "image4";
-      break;
+    box.img.src = '5.jpg';
+    box.img.id = "image4";
+    break;
     case 5:
-      box.img.src = '6.jpg';
-      box.img.id = "image5";
-      break;
+    box.img.src = '6.jpg';
+    box.img.id = "image5";
+    break;
     case 6:
-      box.img.src = '7.jpg';
-      box.img.id = "image6";
-      break;
+    box.img.src = '7.jpg';
+    box.img.id = "image6";
+    break;
     case 7:
-      box.img.src = '8.jpg';
-      box.img.id = "image7";
-      break;
+    box.img.src = '8.jpg';
+    box.img.id = "image7";
+    break;
     case 8:
-      box.img.src = '9.jpg';
-      box.img.id = "image8";
-      break;
+    box.img.src = '9.jpg';
+    box.img.id = "image8";
+    break;
     case 9:
-      box.img.src = '10.jpg';
-      box.img.id = "image9";
-      break;
+    box.img.src = '10.jpg';
+    box.img.id = "image9";
+    break;
     case 10:
-      box.img.src = '11.jpg';
-      box.img.id = "image10";
-      break;
+    box.img.src = '11.jpg';
+    box.img.id = "image10";
+    break;
     case 11:
-      box.img.src = '12.jpg';
-      box.img.id = "image11";
-      break;
+    box.img.src = '12.jpg';
+    box.img.id = "image11";
+    break;
     case 12:
-      box.img.src = '13.jpg';
-      box.img.id = "image12";
-      break;
+    box.img.src = '13.jpg';
+    box.img.id = "image12";
+    break;
     case 13:
-      box.img.src = '14.jpg';
-      box.img.id = "image13";
-      break;
+    box.img.src = '14.jpg';
+    box.img.id = "image13";
+    break;
+    default:
+    break;
   }
 
   box.img.style.position = 'absolute';
-      
+
   // setting position and style for frameimg and cctvimg
   // frameimg.onload = function () {
   //  frameimg.style.left = position[0] + 'px';
@@ -258,7 +260,7 @@ var Box = function(id, position, css) {
     box.img.style.webkitTransform = box.img.style.MozTransform = box.img.style.msTransform = 
     box.img.style.OTransform = box.img.style.transform;
     document.body.appendChild(box.img);
-  }
+  };
 
   // function setTransform is called whenever the box is transformed to new position / scale
   box.setTransform = function(position, fromState, toState, setid, css) {
@@ -271,51 +273,44 @@ var Box = function(id, position, css) {
     if (fromState == 3 && toState == 3) {
       box.img.style.left = position[0] + state2CoordinatesSet[setid][0] + 'px';
       box.img.style.top  = position[1] + state2CoordinatesSet[setid][1] + 'px';  
-      box.position = [position[0] + state2CoordinatesSet[setid][0]
-        , position[1] + state2CoordinatesSet[setid][1]];    
+      box.position = [position[0] + state2CoordinatesSet[setid][0], position[1] + state2CoordinatesSet[setid][1]];    
     }
     else if (fromState == 3 && toState == 2) {
       box.img.style.left = position[0] + state2CoordinatesSet[setid][0] + 'px';
       box.img.style.top  = position[1] + state2CoordinatesSet[setid][1] + 'px';  
-      box.position = [position[0] + state2CoordinatesSet[setid][0]
-        , position[1] + state2CoordinatesSet[setid][1]];     
+      box.position = [position[0] + state2CoordinatesSet[setid][0], position[1] + state2CoordinatesSet[setid][1]];     
     }
     else if (fromState == 2 && toState == 1) {
       box.img.style.left = position[0] + state1CoordinatesSet[setid][0] + 'px';
       box.img.style.top  = position[1] + state1CoordinatesSet[setid][1] + 'px'; 
-      box.position = [position[0] + state1CoordinatesSet[setid][0]
-        , position[1] + state1CoordinatesSet[setid][1]];        
+      box.position = [position[0] + state1CoordinatesSet[setid][0], position[1] + state1CoordinatesSet[setid][1]];        
     }
     else if (fromState == 2 && toState == 3) {
       box.img.style.left = position[0] + state2CoordinatesSet[setid][0] + 'px';
       box.img.style.top  = position[1] + state2CoordinatesSet[setid][1] + 'px'; 
-      box.position = [position[0] + state2CoordinatesSet[setid][0]
-        ,position[1] + state2CoordinatesSet[setid][1]];  
+      box.position = [position[0] + state2CoordinatesSet[setid][0],position[1] + state2CoordinatesSet[setid][1]];  
     }
-    else if (fromState == 1 && toState == 0) {
+    else if (fromState == 1 && toState === 0) {
       box.img.style.left = position[0] + state0CoordinatesSet[setid][0] + 'px';
       box.img.style.top  = position[1] + state0CoordinatesSet[setid][1] + 'px'; 
-      box.position = [position[0] + state0CoordinatesSet[setid][0]
-        , position[1] + state0CoordinatesSet[setid][1]];         
+      box.position = [position[0] + state0CoordinatesSet[setid][0], position[1] + state0CoordinatesSet[setid][1]];         
     }
     else if (fromState == 1 && toState == 2) {
       box.img.style.left = position[0] + state2CoordinatesSet[setid][0] + 'px';
       box.img.style.top  = position[1] + state2CoordinatesSet[setid][1] + 'px'; 
-      box.position = [position[0] + state2CoordinatesSet[setid][0]
-        , position[1] + state2CoordinatesSet[setid][1]];        
+      box.position = [position[0] + state2CoordinatesSet[setid][0], position[1] + state2CoordinatesSet[setid][1]];        
     }
-    else if (fromState == 0) {
+    else if (fromState === 0) {
       // toState can only be 1
       box.img.style.left = position[0] + state1CoordinatesSet[setid][0] + 'px';
       box.img.style.top  = position[1] + state1CoordinatesSet[setid][1] + 'px'; 
-      box.position = [position[0] + state1CoordinatesSet[setid][0]
-        , position[1] + state1CoordinatesSet[setid][1]];          
+      box.position = [position[0] + state1CoordinatesSet[setid][0], position[1] + state1CoordinatesSet[setid][1]];          
     }
     //img.style.transform = 'scale(' + scale[0] + ',' + scale[1] + ')';
     box.img.style.webkitTransform = box.img.style.MozTransform = box.img.style.msTransform =
     box.img.style.OTransform = box.img.style.transform;
     box.img.className = "";
-    if (css != '') {
+    if (css !== '') {
       box.img.classList.add(css);
       box.css = css;
     }
@@ -339,8 +334,8 @@ var Screen = function(id, state, position, css) {
     for (var j = 0; j < 3; j++) {
       // 200 = original box size, 'img' = css style for the state 0
       boxes[i * 3 + j] = new Box(i * 3 + j, [state0CoordinatesSet[i * 3 + j][0] + position[0], state0CoordinatesSet[i * 3 + j][1] + position[1]], 'img');
-    };
-  };
+    }
+  }
 
   // draw a text box below the 9 boxes
   screen.canvas = document.createElement("canvas");
@@ -359,7 +354,7 @@ var Screen = function(id, state, position, css) {
   // function enlarge1 is called when the original 9 boxes state is zoomed in to middle size
   screen.enlarge1 = function(boxid) {
     console.log("enlarge1");
-    if (screen.state == 0) {
+    if (screen.state === 0) {
       // set the selected box to a larger size and at the upper left hand corner
       screen.selectBoxId = boxid;
       boxes[boxid].setTransform(position, screen.state, 1, 0, 'enlarge450');
@@ -406,12 +401,12 @@ var Screen = function(id, state, position, css) {
       }
       screen.state = 3;
     }
-  }
+  };
 
   screen.reduce3 = function() {
     console.log("reduce3");    
     // reduce to full screen mode
-    if (screen.state = 3) {
+    if (screen.state == 3) {
       screen.position = [300, 100];
       boxes[screen.selectBoxId].setTransform(screen.position, screen.state, 2, 0, 'enlarge600');
       var j = 1;
@@ -422,7 +417,7 @@ var Screen = function(id, state, position, css) {
       }
       screen.state = 2;
     }
-  }
+  };
 
   screen.reduce2 = function() {
     console.log("reduce2");    
@@ -450,7 +445,7 @@ var Screen = function(id, state, position, css) {
       }
       screen.state = 0;
     }
-  }
+  };
 
   screen.pantilt = function(direction) {
     console.log("pantilt");    
@@ -547,8 +542,8 @@ var Screen = function(id, state, position, css) {
         }
       }
     }
-  }
-}
+  };
+};
 
 // initialize a new screen with 
 screens[0] = new Screen(0, 0, [300, 100], 'img');
@@ -574,12 +569,7 @@ Leap.loop({enableGestures: true}, function(frame) {
   var frameOutput = document.getElementById("frameData");
 
   // Display basic data
-  var frameString = "Frame ID: " + frame.id + "<br />"
-  + "Timestamp:" + frame.timestamp + " &micro;s<br />"
-  + "Hands: " + frame.hands.length + "<br />"
-  + "Fingers: " + frame.fingers.length + "<br />"
-  + "Tools: " + frame.tools.length + "<br />"
-  + "Gestures: " + frame.gestures.length + "<br />";
+  var frameString = "Frame ID: " + frame.id + "<br />" + "Timestamp:" + frame.timestamp + " &micro;s<br />" + "Hands: " + frame.hands.length + "<br />" + "Fingers: " + frame.fingers.length + "<br />" + "Tools: " + frame.tools.length + "<br />" + "Gestures: " + frame.gestures.length + "<br />";
 
   // Frame motion factors
   if (previousFrame && previousFrame.valid) {
@@ -703,32 +693,33 @@ Leap.loop({enableGestures: true}, function(frame) {
     }
     for (var i = 0; i < frame.gestures.length; i++) {
       var gesture = frame.gestures[i];
-      gestureString += "Gesture ID: " + gesture.id + ", "
-      + "type: " + gesture.type + ", "
-      + "state: " + gesture.state + ", "
-      + "hand IDs: " + gesture.handIds.join(", ") + ", "
-      + "pointable IDs: " + gesture.pointableIds.join(", ") + ", "
-      + "duration: " + gesture.duration + " &micro;s, ";
+      gestureString += "Gesture ID: " + gesture.id + ", ";
+      gestureString += "type: " + gesture.type + ", ";
+      gestureString += "state: " + gesture.state + ", ";
+      gestureString += "hand IDs: " + gesture.handIds.join(", ") + ", ";
+      gestureString += "pointable IDs: " + gesture.pointableIds.join(", ") + ", ";
+      gestureString += "duration: " + gesture.duration + " &micro;s, ";
 
       switch (gesture.type) {
         case "circle":
-          gestureString += "center: " + vectorToString(gesture.center) + " mm, "
-          + "normal: " + vectorToString(gesture.normal, 2) + ", "
-          + "radius: " + gesture.radius.toFixed(1) + " mm, "
-          + "progress: " + gesture.progress.toFixed(2) + " rotations";
-          break;
+        gestureString += "center: " + vectorToString(gesture.center) + " mm, "
+        gestureString += "normal: " + vectorToString(gesture.normal, 2) + ", "
+        gestureString += "radius: " + gesture.radius.toFixed(1) + " mm, "
+        gestureString += "progress: " + gesture.progress.toFixed(2) + " rotations";
+        break;
         case "swipe":
-          gestureString += "start position: " + vectorToString(gesture.startPosition) + " mm, "
-          + "current position: " + vectorToString(gesture.position) + " mm, "
-          + "direction: " + vectorToString(gesture.direction, 1) + ", "
-          + "speed: " + gesture.speed.toFixed(1) + " mm/s";
-          break;
+        gestureString += "start position: " + vectorToString(gesture.startPosition) + " mm, "
+        gestureString += "current position: " + vectorToString(gesture.position) + " mm, "
+        gestureString += "direction: " + vectorToString(gesture.direction, 1) + ", "
+        gestureString += "speed: " + gesture.speed.toFixed(1) + " mm/s";
+        break;
         case "screenTap":
         case "keyTap":
-          gestureString += "position: " + vectorToString(gesture.position) + " mm";
-          break;
+        gestureString += "position: " + vectorToString(gesture.position) + " mm";
+        break;
         default:
-          gestureString += "unkown gesture type";
+        gestureString += "unkown gesture type";
+        break;
       }
       gestureString += "<br />";
     }
@@ -742,10 +733,10 @@ Leap.loop({enableGestures: true}, function(frame) {
   previousFrame = frame;
 
 	// handle enlarge1 function
-  if (screens[0].state == 0) {
-	  if (frame.valid && frame.gestures.length > 0) {
-		  for(var i = 0; i < frame.gestures.length; i++) {
-			 var gesture = frame.gestures[i];
+  if (screens[0].state === 0) {
+   if (frame.valid && frame.gestures.length > 0) {
+    for(var i = 0; i < frame.gestures.length; i++) {
+      var gesture = frame.gestures[i];
         // using swipe/ circle gesture to enlarge screen
         if (gesture.type == "swipe") {
           console.log(gesture.direction[0] + " " + gesture.direction[1]);
@@ -786,13 +777,13 @@ Leap.loop({enableGestures: true}, function(frame) {
         if (gesture.type == "circle") {
          console.log("middle");
          screens[0].enlarge1(4);  
-        }        
-      }
-    }
-  }
+       }        
+     }
+   }
+ }
 
-  else if (screens[0].state == 1) {
-    var debugstring = "";
+ else if (screens[0].state == 1) {
+  var debugstring = "";
     // using pinch strength to enlarge screen
     if (frame.valid && frame.hands.length > 0) {
       for (var i = 0; i < frame.hands.length; i++) {
@@ -815,9 +806,9 @@ Leap.loop({enableGestures: true}, function(frame) {
           }
         }
         // only insert into set if the following criteria are met
-        else if (hand.pinchStrength.toPrecision(2) != 0.0 && hand.pinchStrength.toPrecision(2) != 1.0) {
+        else if (hand.pinchStrength.toPrecision(2) !== 0.0 && hand.pinchStrength.toPrecision(2) != 1.0) {
           // record first reading if the set is empty
-          if (pinchSet.length == 0) {
+          if (pinchSet.length === 0) {
             pinchSet[0] = hand.pinchStrength.toPrecision(2);
             debugstring = "first " + pinchSet[pinchSet.length - 1] + " ";
           }
@@ -866,7 +857,7 @@ Leap.loop({enableGestures: true}, function(frame) {
 
   else if (screens[0].state == 2) {
    var debugstring = "";
-    if (frame.valid) {
+   if (frame.valid) {
       // for pan/tilt
       if (frame.gestures.length > 0) {
         for(var i = 0; i < frame.gestures.length; i++) {
@@ -889,9 +880,9 @@ Leap.loop({enableGestures: true}, function(frame) {
               pinchSet.pop();
             }
           }
-          else if (hand.pinchStrength.toPrecision(2) != 0.0 && hand.pinchStrength.toPrecision(2) != 1.0) {
+          else if (hand.pinchStrength.toPrecision(2) !== 0.0 && hand.pinchStrength.toPrecision(2) != 1.0) {
             // record first reading if the set is empty
-            if (pinchSet.length == 0) {
+            if (pinchSet.length === 0) {
               pinchSet[0] = hand.pinchStrength.toPrecision(2);
               debugstring = "first" + pinchSet[pinchSet.length - 1] + " ";
             }
@@ -925,11 +916,11 @@ Leap.loop({enableGestures: true}, function(frame) {
 
   else if (screens[0].state == 3) {
    var debugstring = "";
-    if (frame.valid) {
-      if (frame.gestures.length > 0) {      
-        for (var i = 0; i < frame.gestures.length; i++) {
-          var gesture = frame.gestures[i];
-          if(gesture.type == "swipe") {
+   if (frame.valid) {
+    if (frame.gestures.length > 0) {      
+      for (var i = 0; i < frame.gestures.length; i++) {
+        var gesture = frame.gestures[i];
+        if(gesture.type == "swipe") {
             //Classify swipe as either horizontal or vertical
             var isHorizontal = Math.abs(gesture.direction[0]) > Math.abs(gesture.direction[1]);
             //Classify as right-left or up-down
@@ -971,36 +962,165 @@ Leap.loop({enableGestures: true}, function(frame) {
 });
 
 // voice control
+// flickr album: https://www.flickr.com/photos/40812391@N07/sets/72157651267567745/
+// available keywords: hkust, atrium, california, car park, jasmine ng, koala tang
+// api key: 2e1114d55ba07373636c39530b58e7c5, secret: c0e335ab678698ad
 if (annyang) {
-  if (screens[0].state == 0) {
-    var showImage = function(tag) {
-      $('#flickrGallery').show();
-      $('#voiceMsg p').text('Searching for ' + tag);
-      var url = '//api.flickr.com/services/rest/?method=flickr.photos.search&api_key=a828a6571bb4f0ff8890f7a386d61975&sort=interestingness-desc&per_page=9&format=json&callback=jsonFlickrApi&tags='+tag;
-      $.ajax({
-        type: 'GET',
-        url: url,
-        async: false,
-        jsonpCallback: 'jsonFlickrApi',
-        contentType: "application/json",
-        dataType: 'jsonp'
-      });
-    };
+  if (screens[0].state === 0) {
+    var key = "2e1114d55ba07373636c39530b58e7c5";
+    var setid = "72157651267567745";
+    var userid = "40812391@N07";
+    var tagArray = [];
+    var i = 0;      
+    var photoIDAndPhotoURLArray = new Array(); // [photoID, photoURL]
 
-    var jsonFlickrApi = function(results) {
-      $('#voiceMsg p').fadeOut('slow');
-      var photos = results.photos.photo;
-      $.each(photos, function(index, photo) {
-        $(document.createElement("img"))
-          .attr({ src: '//farm'+photo.farm+'.staticflickr.com/'+photo.server+'/'+photo.id+'_'+photo.secret+'_s.jpg' })
-          .addClass("flickrGallery")
-          .appendTo(flickrGallery);
+    var showImage = function(tag) {
+      $('#voiceMsg p').text('Searching for ' + tag);
+      tagArray = tag.split(" ");
+      $.each(tagArray, function(j, item) {
+        tagArray[j] = item.toLowerCase();
       });
+      var flickrGetAllContent = "//api.flickr.com/services/rest/?&method=flickr.photosets.getPhotos&api_key=" + key + "&photoset_id=" + setid + "&user_id=" + userid + "&format=json&jsoncallback=?"; //&callback=jsonFlickrApi";
+
+      $.getJSON(flickrGetAllContent, function(data) {        
+        //loop through the results with the following function
+        $.each(data.photoset.photo, function(k,item) {        
+          //build the url of the photo in order to link to it
+          var photoURL = '//farm' + item.farm + '.static.flickr.com/' + item.server + '/' + item.id + '_' + item.secret + '_m.jpg';
+          
+          //turn the photo id into a variable
+          var photoID = item.id;                
+              
+          //use another ajax request to get the tags of the image
+          var flickrGetPhotoInfo = "//api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=" + key + "&photo_id=" + photoID + "&format=json&jsoncallback=?"; //callback=jsonFlickrApi1";
+          $.getJSON(flickrGetPhotoInfo, function(data) {              
+              //if the image has tags
+              if(data.photo.tags.tag !== '') {
+                $.each(data.photo.tags.tag, function(j, item) {
+                  if ($.inArray(item.raw.toLowerCase(), tagArray) > -1 && i < 9) {
+                    boxes[i].img.src = photoURL;
+                    i++;
+                    return false;
+                  }
+                });
+                  // //create an empty array to contain all the tags
+                  // var tagsArr = new Array();
+                  
+                  // //for each tag, run this function
+                  // $.each(data.photo.tags.tag, function(j, item){                            
+                  //     //push each tag into the empty 'tagsArr' created above
+                  //     tagsArr.push('<a href="http://www.flickr.com/photos/tags/' + item._content + '">' + item.raw + '</a>');
+                      
+                  // });                            
+                  // //turn the tags array into a string variable
+                  // var tags = tagsArr.join(', ');
+
+
+              }                        
+            }); 
+          if (i > 8) {
+            return false;
+          }           
+          });
+        });
+      $('#voiceMsg p').fadeOut('slow');
+      i = 0;
+      // //$('#flickrGallery').show();
+      // $('#voiceMsg p').text('Searching for ' + tag);
+      // $.when( 
+      //   $.ajax({
+      //     type: 'GET',
+      //     url: flickrGetAllContent,
+      //     async: false,
+      //     jsonpCallback: 'jsonFlickrApi',
+      //     contentType: "application/json",
+      //     dataType: 'jsonp'
+      //   }))
+      // .then(
+      //   $.each(photoIDAndPhotoURLArray, function(index, item) {
+      //     var flickrGetPhotoInfo = "//api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=" + key + "&photo_id=" + item[0] + "&format=json&callback=jsonFlickrApi1";
+      //     $.ajax({
+      //       type: 'GET',
+      //       url: flickrGetPhotoInfo,
+      //       async: false,
+      //       jsonpCallback: 'jsonFlickrApi1',
+      //       contentType: "application/json",
+      //       dataType: 'jsonp'
+      //     });  
+      //     if (i > 8) {
+      //       return false;
+      //     } 
+      //   })       
+      //   );
+      // $.ajax({
+      //   type: 'GET',
+      //   url: flickrGetAllContent,
+      //   async: false,
+      //   jsonpCallback: 'jsonFlickrApi',
+      //   contentType: "application/json",
+      //   dataType: 'jsonp'
+      // });
+};
+
+var jsonFlickrApi = function(results) {
+  $.each(results.photoset.photo, function(index, p) {
+    photoIDAndPhotoURLArray.push([p.id, "https://farm" + p.farm + ".static.flickr.com/" + p.server + "/" + p.id + "_" + p.secret + "_o.jpg"]);
+  });
+      // $('#voiceMsg p').fadeOut('slow');
+      // $.each(photoIDAndPhotoURLArray, function(index, item) {
+      //   var flickrGetPhotoInfo = "//api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=" + key + "&photo_id=" + item[0] + "&format=json&callback=jsonFlickrApi1";
+      //   $.ajax({
+      //     type: 'GET',
+      //     url: flickrGetPhotoInfo,
+      //     async: false,
+      //     jsonpCallback: 'jsonFlickrApi1',
+      //     contentType: "application/json",
+      //     dataType: 'jsonp'
+      //   });  
+      //   if (i > 8) {
+      //     return false;
+      //   }
+    };    
+
+
+    var jsonFlickrApi1 = function(data) {
+      if (data.photo.tags.tag !== "") {
+        $.each(data.photo.tags.tag, function(j, item) {
+          if ($.inArray(item.raw.toLowerCase(), tagArray) > -1) {
+            boxes[i].img.src = item[1];
+            i++;
+            return false;
+          }
+        });
+      }
     };
+      // var url = '//api.flickr.com/services/rest/?method=flickr.photos.search&api_key=2e1114d55ba07373636c39530b58e7c5&sort=interestingness-desc&per_page=9&format=json&callback=jsonFlickrApi&tags='+tag;
+      // console.log(url);
+      // $.ajax({
+      //   type: 'GET',
+      //   url: url,
+      //   async: false,
+      //   jsonpCallback: 'jsonFlickrApi',
+      //   contentType: "application/json",
+      //   dataType: 'jsonp'
+      // });
+
+    // var jsonFlickrApi = function(results) {
+    //   $('#voiceMsg p').fadeOut('slow');
+    //   var photos = results.photos.photo;
+    //   $.each(photos, function(index, photo) {
+    //     boxes[index].img.src = '//farm'+photo.farm+'.staticflickr.com/'+photo.server+'/'+photo.id+'_'+photo.secret+'_o.jpg';
+    //     // $(document.createElement("img"))
+    //     //   .attr({ src: '//farm'+photo.farm+'.staticflickr.com/'+photo.server+'/'+photo.id+'_'+photo.secret+'_s.jpg' })
+    //     //   .addClass("flickrGallery")
+    //     //   .appendTo(flickrGallery);
+    //   });
+    // };
 
     var commands = {
       //msg to be recognized
-      'show me *place': showImage, 
+      //'*abc': showImage,
+      'show me *place': showImage
     };
     annyang.debug();
     annyang.addCommands(commands);
@@ -1021,9 +1141,7 @@ function vectorToString(vector, digits) {
   if (typeof digits === "undefined") {
     digits = 1;
   }
-  return "(" + vector[0].toFixed(digits) + ", "
-   + vector[1].toFixed(digits) + ", "
-   + vector[2].toFixed(digits) + ")";
+  return "(" + vector[0].toFixed(digits) + ", " + vector[1].toFixed(digits) + ", " + vector[2].toFixed(digits) + ")";
 }
 
 function togglePause() {
