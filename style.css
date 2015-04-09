@@ -1,0 +1,115 @@
+/* css styles to change box size */
+div.cctv{
+  position: relative;
+  left: 50px;
+  top: 40px;
+  height: 600px;
+  width: 600px;
+  border:2px solid #000000;
+}
+img {
+  height: auto;
+  max-width: 195px;
+  -moz-transition: all 1s;
+  -ms-transition: all 1s;
+  -o-transition: all 1s;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+img.enlarge150 {
+  max-width: 145px;
+}
+img.enlarge450 {
+  max-width: 445px;
+}
+img.enlarge600 {
+  max-width: 595px;
+}
+img.enlarge800 {
+  max-width: 800px;
+}
+img.invisible {1s
+  display: none;
+}
+img.maskmiddle800 {
+  max-width:800px;
+  -moz-clip-path: inset(100px 100px 100px 100px);
+  -ms-clip-path: inset(100px 100px 100px 100px);
+  -o-clip-path: inset(100px 100px 100px 100px);
+  -webkit-clip-path: inset(100px 100px 100px 100px);
+  clip-path: inset(100px 100px 100px 100px);
+}
+img.maskleft800 {
+  max-width:800px;
+  -moz-clip-path: inset(100px 200px 100px 5px);
+  -ms-clip-path: inset(100px 200px 100px 5px);
+  -o-clip-path: inset(100px 200px 100px 5px);
+  -webkit-clip-path: inset(100px 200px 100px 5px);
+  clip-path: inset(100px 200px 100px 5px);
+}
+img.maskright800 {
+  max-width:800px;
+  -moz-clip-path: inset(100px 5px 100px 200px);
+  -ms-clip-path: inset(100px 5px 100px 200px);
+  -o-clip-path: inset(100px 5px 100px 200px);
+  -webkit-clip-path: inset(100px 5px 100px 200px);
+  clip-path: inset(100px 5px 100px 200px);
+}
+img.maskup800 {
+  max-width:800px;
+  -moz-clip-path: inset(5px 100px 200px 100px);
+  -ms-clip-path: inset(5px 100px 200px 100px);
+  -o-clip-path: inset(5px 100px 200px 100px);
+  -webkit-clip-path: inset(5px 100px 200px 100px);
+  clip-path: inset(5px 100px 200px 100px);
+}
+img.maskdown800 {
+  max-width:800px;
+  -moz-clip-path: inset(200px 100px 5px 100px);
+  -ms-clip-path: inset(200px 100px 5px 100px);
+  -o-clip-path: inset(200px 100px 5px 100px);
+  -webkit-clip-path: inset(200px 100px 5px 100px);
+  clip-path: inset(200px 100px 5px 100px);
+}
+img.maskleftup800 {
+  max-width:800px;
+  -moz-clip-path: inset(5px 200px 200px 5px);
+  -ms-clip-path: inset(5px 200px 200px 5px);
+  -o-clip-path: inset(5px 200px 200px 5px);
+  -webkit-clip-path: inset(5px 200px 200px 5px);
+  clip-path: inset(5px 200px 200px 5px);
+}
+img.maskleftdown800 {
+  max-width:800px;
+  -moz-clip-path: inset(200px 200px 5px 5px);
+  -ms-clip-path: inset(200px 200px 5px 5px);
+  -o-clip-path: inset(200px 200px 5px 5px);
+  -webkit-clip-path: inset(200px 200px 5px 5px);
+  clip-path: inset(200px 200px 5px 5px);
+}
+img.maskrightup800 {
+  max-width:800px;
+  -moz-clip-path: inset(5px 5px 200px 200px);
+  -ms-clip-path: inset(5px 5px 200px 200px);
+  -o-clip-path: inset(5px 5px 200px 200px);
+  -webkit-clip-path: inset(5px 5px 200px 200px);
+  clip-path: inset(5px 5px 200px 200px);
+}
+img.maskrightdown800 {
+  max-width:800px;
+  -moz-clip-path: inset(200px 5px 5px 200px);
+  -ms-clip-path: inset(200px 5px 5px 200px);
+  -o-clip-path: inset(200px 5px 5px 200px);
+  -webkit-clip-path: inset(200px 5px 5px 200px);
+  clip-path: inset(200px 5px 5px 200px);
+}
+.screen {
+  position: relative;
+  width: 800px;
+  height: 800px;
+  margin: auto;
+  float: right;
+}
+.hidden {
+  display: none;
+}
